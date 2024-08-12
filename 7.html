@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+<style>
+body {
+  background-image: url('https://www.worldatlas.com/r/w1200/upload/22/a0/fd/shutterstock-619251317.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+    <h1>Heart Disease Prediction</h1>
+    <form id="heartDiseaseForm">
+        <div class="form-group">
+            <label for="age">Age (in years):</label>
+            <input type="number" id="age" name="age" min="0" required>
+        </div>
+        <div class="form-group">
+            <label for="sex">Sex:</label>
+            <select id="sex" name="sex" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="chol">Cholesterol Level:</label>
+            <input type="number" id="chol" name="chol" min="0" required>
+        </div>
+        <div class="form-group">
+            <label for="thalach">Maximum Heart Rate Achieved:</label>
+            <input type="number" id="thalach" name="thalach" min="0" required>
+        </div>
+        <div class="form-group">
+            <label for="bp">Blood Pressure:</label>
+            <input type="number" id="bp" name="bp" min="0" required>
+        </div>
+        <div class="form-group">
+            <label for="glucose">Glucose Level:</label>
+            <input type="number" id="glucose" name="glucose" min="0" required>
+        </div>
+	<div class="form-group">
+             <label class="form-label">Chest pain type</label>
+             <select class="form-select" id="cp" required="">
+               <option value="0">typical angina</option>
+               <option value="1">atypical angina</option>
+               <option value="2">non-anginal pain</option>
+               <option value="1">asymptomatic</option>
+              </select>
+         </div>
+
+        <div class="form-group">
+             <label class="trestbps">Resting blood pressure</label>
+             <input type="number" "id="trestbps" name = "trestbps" placeholder="in mm Hg">
+        </div>
+        
+	<div class="form-group">
+             <label class="form-label">Fasting blood sugar &gt; 120 mg/dl</label>
+                  <select class="form-select" id="fbs" required="">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Resting ECG results</label>
+                  <select class="form-select" id="restecg" required="">
+                    <option value="0">normal</option>
+                    <option value="1"> having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of &gt; 0.05 mV) </option>
+                    <option value="2">showing probable or definite left ventricular hypertrophy by Estes' criteria </option>
+                  </select>
+                </div>
+
+               <div class="form-group">
+                  <label class="thalach">Maximum heart rate achieved</label>
+                  <input type="number"  id="thalach" name = "thalach" placeholder="in mm Hg">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Exercise induced angina</label>
+                  <select class="form-select" id="exang" required="">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="oldpeak">ST depression induced by exercise relative to rest</label>
+                  <input type="number" id="oldpeak" name = "oldpeak" placeholder = "in mm Hg">
+                </div>
+
+               <div class="form-group">
+                  <label class="form-label">Slope - the slope of the peak exercise ST segment</label>
+                  <select class="form-select" id="slope" required="">
+                    <option value="0">upsloping</option>
+                    <option value="1">flat</option>
+                    <option value="2">downsloping</option>
+                  </select>
+                </div>
+<div class="form-group">
+                  <label class="form-label">Number of major vessels (0-3) colored by flourosopy</label>
+                  <select class="form-select" id="ca" required="">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Thalium (thal)</label>
+                  <select class="form-select" id="thal" required="">
+                    <option value="0">normal</option>
+                    <option value="1">fixed defect</option>
+                    <option value="2">reversable defect</option>
+                  </select>
+                </div>
+              </div>
+        <input type="submit" value="Predict">
+    </form>
+    <div class="result" id="predictionResult"></div>
+</div>
+
+
+    <script>
+        document.getElementById("heartDiseaseForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Fetch input values
+            const age = parseInt(document.getElementById("age").value);
+            const sex = document.getElementById("sex").value;
+            const chol = parseInt(document.getElementById("chol").value);
+            const glucose = parseInt(document.getElementById("glucose").value);
+
+            // Simple prediction logic (just for demonstration)
+            let predictionPercentage = 0;
+            if (sex === "male") {
+                predictionPercentage = (age * 0.2) + (chol * 0.2) - (glucose * 0.15);
+            } else {
+                predictionPercentage = (age * 0.15) + (chol * 0.2) - (glucose * 0.15);
+            }
+            // Round to two decimal places
+            predictionPercentage = Math.max(0, Math.min(100, predictionPercentage)).toFixed(2);
+
+            // Display result
+            document.getElementById("predictionResult").innerHTML = `Prediction Percentage: ${predictionPercentage}%`;
+        });
+    </script>
+</body>
+</html>
